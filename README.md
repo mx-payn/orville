@@ -22,3 +22,12 @@ To get a more readable output, make sure `bunyan` is installed, e.g.
 ```sh
 RUST_LOG=trace cargo run | bunyan
 ```
+
+## Database
+The `postgresql` database is run in a docker container for development. A script is provided
+for initialization `scripts/init_db.sh`. When the container is running (`docker ps`)
+use environment variable `SKIP_DOCKER=true` to skip starting the container, else
+the script will fail.
+
+The script will check whether dependencies `psql` and `sqlx` are installed,
+start the container, create the database and migrate.
